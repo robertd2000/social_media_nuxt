@@ -9,7 +9,7 @@
             </div>
           </div>
           <main class="main">
-            <h1>Main</h1>
+            <router-view />
           </main>
           <div class="sidebar-right">
             <div class="stick">
