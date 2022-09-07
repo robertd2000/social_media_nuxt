@@ -17,16 +17,16 @@ export const WhoToFollowItems = [
   {
     name: 'Joe Biden',
     handle: '@JoeBiden',
-    image: 'https://picsum.photos/200/200',
+    image: 'https://random.imagecdn.app/200/200',
   },
   {
     name: 'Joe Biden',
     handle: '@JoeBiden',
-    image: 'https://picsum.photos/200/200',
+    image: 'https://random.imagecdn.app/200/200',
   },
   {
     name: 'Joe Biden',
     handle: '@JoeBiden',
-    image: 'https://picsum.photos/200/200',
+    image: 'https://random.imagecdn.app/200/200',
   },
 ]
