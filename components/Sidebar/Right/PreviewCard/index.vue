@@ -21,7 +21,7 @@ const props = defineProps({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .wrapper {
   @apply m-2 overflow-hidden border rounded-2xl bg-gray-50 dark:bg-dim-700;
 

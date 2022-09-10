@@ -31,7 +31,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .wrapper {
-  @apply border-x;
+  @apply border-x w-full;
   .title {
     @apply sticky top-0 px-4 py-3 bg-white/80 backdrop-blur-md dark:bg-dim-900/80;
 

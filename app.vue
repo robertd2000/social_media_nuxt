@@ -1,14 +1,16 @@
 <template>
   <div :class="{ dark: darkMode }">
-    <div class="wrapper">
-      <div class="wrapper-h">
+    <div class="app">
+      <loading-page v-if="isAuthloading" />
+      <!--  -->
+      <div v-else-if="user" class="main">
         <div>
           <div class="sidebar-left">
             <div>
               <sidebar-left />
             </div>
           </div>
-          <main class="main">
+          <main class="content">
             <router-view />
           </main>
           <div class="sidebar-right">
@@ -18,19 +20,32 @@
           </div>
         </div>
       </div>
+
+      <auth-page v-else />
     </div>
   </div>
 </template>
 
 <script setup>
+import useAuth from './composables/useAuth'
+
 const darkMode = ref(false)
+const { useAuthUser, initAuth, useAuthLoading } = useAuth()
+
+const isAuthloading = useAuthLoading()
+
+const user = useAuthUser()
+
+onBeforeMount(() => {
+  initAuth()
+})
 </script>
 
-<style lang="scss">
-.wrapper {
+<style lang="scss" scoped>
+.app {
   @apply bg-white dark:bg-dim-900;
 
-  .wrapper-h {
+  .main {
     @apply min-h-full;
     > div {
       @apply grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5;
@@ -39,7 +54,7 @@ const darkMode = ref(false)
         @apply hidden md:block xs:col-span-1 xl:col-span-2;
       }
 
-      .main {
+      .content {
         @apply col-span-12 md:col-span-8 xl:col-span-6;
       }
 

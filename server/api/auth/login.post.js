@@ -1,7 +1,9 @@
 import { sendError } from 'h3'
 import { getUserByUsername } from '~~/server/db/user'
 import bcrypt from 'bcrypt'
-import { generateTokens } from '~~/server/utils/jwt'
+import { generateTokens, sendRefreshToken } from '~~/server/utils/jwt'
+import { userTransformer } from '~~/server/transformers/user'
+import { createRefreshToken } from '~~/server/db/refreshTokens'
 
 export default defineEventHandler(async (event) => {
   const body = await useBody(event)
@@ -42,9 +44,17 @@ export default defineEventHandler(async (event) => {
     )
   }
 
-  const { accessToken, refreshToken } = generateTokens()
+  const { accessToken, refreshToken } = generateTokens(user)
+
+  await createRefreshToken({
+    token: refreshToken,
+    userId: user.id,
+  })
+
+  sendRefreshToken(event, refreshToken)
 
   return {
-    user,
+    access_token: accessToken,
+    user: userTransformer(user),
   }
 })
