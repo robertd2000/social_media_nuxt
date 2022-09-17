@@ -8,7 +8,7 @@
       </nuxt-link>
     </div>
 
-    <div class="mt-2 space-y-3">
+    <div class="icons">
       <SidebarLeftTab active>
         <template v-slot:icon>
           <HomeIcon />
@@ -64,6 +64,20 @@
         </template>
         <template v-slot:name> More </template>
       </SidebarLeftTab>
+
+      <div class="tweet-btn-xl">
+        <u-i-button liquid size="lg">
+          <span> Tweet </span>
+        </u-i-button>
+      </div>
+
+      <div class="tweet-btn-sm">
+        <u-i-button>
+          <div>
+            <PencilIcon />
+          </div>
+        </u-i-button>
+      </div>
     </div>
   </div>
 </template>
@@ -94,6 +108,25 @@ const { defaultTransition } = useTailwindConfig()
 
     .logo {
       @apply w-8 h-8;
+    }
+  }
+
+  .icons {
+    @apply mt-2 space-y-3;
+
+    .tweet-btn-xl {
+      @apply hidden xl:block;
+      span {
+        @apply font-bold;
+      }
+    }
+
+    .tweet-btn-sm {
+      @apply block xl:hidden;
+
+      div {
+        @apply w-6 h-6 font-bold;
+      }
     }
   }
 }
