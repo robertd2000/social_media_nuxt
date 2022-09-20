@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link to="#" class="tabs" :class="defaultTransition">
+  <nuxt-link :to="props.link" class="tabs" :class="defaultTransition">
     <div class="icon-tab">
       <slot name="icon"></slot>
     </div>
@@ -17,6 +17,10 @@ const props = defineProps({
   active: {
     type: Boolean,
     default: false,
+  },
+  link: {
+    type: String,
+    default: '#',
   },
 })
 

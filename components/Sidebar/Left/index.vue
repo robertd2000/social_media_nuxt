@@ -9,7 +9,7 @@
     </div>
 
     <div class="icons">
-      <SidebarLeftTab active>
+      <SidebarLeftTab active :link="'/'">
         <template v-slot:icon>
           <HomeIcon />
         </template>

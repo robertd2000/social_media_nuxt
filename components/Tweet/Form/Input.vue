@@ -6,7 +6,14 @@
       </div>
 
       <div class="input">
-        <textarea v-model="text" name="" id="" cols="30" rows="10"></textarea>
+        <textarea
+          v-model="text"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          :placeholder="props.placeholder"
+        ></textarea>
       </div>
     </div>
 
@@ -117,6 +124,10 @@ const props = defineProps({
   user: {
     type: Object,
     required: true,
+  },
+  placeholder: {
+    type: String,
+    default: "What's happening?",
   },
 })
 
